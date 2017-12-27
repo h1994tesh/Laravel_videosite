@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
+
 class Admin
 {
     /**
@@ -15,14 +15,6 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->route('login');
-            }
-        }
-        
         return $next($request);
     }
 }

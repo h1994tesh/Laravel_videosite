@@ -35,7 +35,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/admin', function () {
         return view('admin.index');
     })->name('admin');
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin');
     Route::get('users', 'UsersController@index');
+    Route::get('roles', 'RolesController@index');
+    Route::get('roles/create', 'RolesController@create');
+    Route::post('roles/create', 'RolesController@store');
 });
 
 
