@@ -5,16 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
-class User extends Model implements Authenticatable, AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements Authenticatable, CanResetPasswordContract {
 
     use \Illuminate\Auth\Authenticatable;
 
-use Authenticatable,
-    CanResetPassword;
+use CanResetPassword;
 
 use EntrustUserTrait;
 
@@ -39,4 +37,11 @@ use EntrustUserTrait;
         return $this->hasMany('App\Videos');
     }
 
+    public function saveRoles($roles){
+        if(!empty($roles)){
+            $this->roles()->sync($roles);
+        }else{
+            $this->roles()->detach();
+        }
+    }
 }

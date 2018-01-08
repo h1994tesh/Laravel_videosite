@@ -38,10 +38,20 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin');
+    
     Route::get('users', 'UsersController@index');
     Route::get('roles', 'RolesController@index');
     Route::get('roles/create', 'RolesController@create');
     Route::post('roles/create', 'RolesController@store');
+    
+    /*Route::get('users', ['uses' => 'UsersController@index', 'middleware' => 'admin']);
+    Route::get('roles', ['uses' => 'RolesController@index', 'middleware' => 'admin']);
+    Route::get('roles/create', ['uses' => 'RolesController@create', 'middleware' => 'admin']);
+    Route::post('roles/create', ['uses' => 'RolesController@store', 'middleware' => 'admin']); */
+    
+    Route::get('users/{id?}/edit', 'UsersController@edit');
+    Route::post('users/{id?}/edit', 'UsersController@update');
+    
 });
 
 

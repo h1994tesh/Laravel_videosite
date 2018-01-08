@@ -11,6 +11,8 @@
             <li class="selected"><a href="{{ Url::to('/admin') }}">Home</a></li>
             {{-- @if(Auth::check()) --}}
                 <!-- <li><a href="{{ Url::to('/') }}/users/upload-video">Upload Video</a></li> -->
+                <li><a href="{{ Url::to('/') }}/admin/roles">View Roles</a></li>
+                <li><a href="{{ Url::to('/') }}/admin/users">Users</a></li>
                 <li><a href="{{ Url::to('/') }}/admin/logout">Logout</a></li>
             {{-- @else --}}
                 <li><a href="{{ Url::to('/') }}/admin/login">Login</a></li>

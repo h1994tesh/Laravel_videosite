@@ -22,7 +22,7 @@
             @foreach($users as $user)
             <tr>
                 <th scope="row"><?php echo $i; ?></th>
-                <td>{!! $user->r_name !!}</td>
+                <td><a href="{!! action('Admin\UsersController@edit', $user->r_id) !!}">{!! $user->r_name !!}</a></td>
                 <td>{!! $user->r_email !!}</td>
                 <td>@if($user->r_gender == 1) Male @else "Female" @endif</td>
                 <td>{!! $user->r_country !!}</td>

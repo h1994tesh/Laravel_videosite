@@ -66,7 +66,7 @@ class UserController extends Controller {
 
         $user->r_name = $name;
         $user->r_email = $email;
-        $user->r_password = $password;
+        $user->password = $password;
         $user->r_gender = $g;
         $user->r_country = $cnt;
 
